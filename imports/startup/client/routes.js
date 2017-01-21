@@ -6,12 +6,12 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 import App from '../../ui/pages/app'
 
-import Editor from '../../ui/layouts/editor'
+import MyEditor from '../../ui/layouts/editor'
 
 const routes = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Editor} />
+      <IndexRoute component={MyEditor} />
     </Route>
   </Router>
 )
