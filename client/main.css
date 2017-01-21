@@ -7,3 +7,16 @@ h1, h2, h3, h4, h5, h6 {
 .editor-container {
   font-family: 'Open Sans', sans-serif;
 }
+
+.DraftEditor-root {
+  font-family: 'Open Sans', sans-serif;
+  width: 600px;
+  padding: 20px;
+}
+
+.DraftEditor-editorContainer {
+  border: 1px solid #ccc;
+  cursor: text;
+  min-height: 80px;
+  padding: 10px
+}
