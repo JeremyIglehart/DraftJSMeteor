@@ -2,10 +2,11 @@
   "name": "DraftJSMeteor",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor --settings settings-development.json"
   },
   "dependencies": {
     "babel-runtime": "6.18.0",
+    "bcrypt": "^1.0.2",
     "draft-js": "^0.9.1",
     "material-ui": "^0.16.7",
     "meteor-node-stubs": "~0.2.0",

@@ -12,6 +12,8 @@ import {
           RichUtils
         } from 'draft-js'
 
+import { Accounts, STATES } from 'meteor/std:accounts-ui';
+
 import RaisedButton from 'material-ui/RaisedButton'
 import FontIcon from 'material-ui/FontIcon'
 import IconButton from 'material-ui/IconButton'
@@ -77,6 +79,8 @@ class MyEditor extends Component {
           handleKeyCommand={this.handleKeyCommand.bind(this)}
           />
         <RaisedButton label="Log Editor State to Console" onClick={this.logState.bind(this)} primary={true} style={buttonStyle} />
+
+        <Accounts.ui.LoginForm />
       </div>
     )
   }
