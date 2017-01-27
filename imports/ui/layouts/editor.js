@@ -81,6 +81,8 @@ class MyEditor extends Component {
         <RaisedButton label="Log Editor State to Console" onClick={this.logState.bind(this)} primary={true} style={buttonStyle} />
 
         <Accounts.ui.LoginForm />
+
+        <p>This is a test - do I stay?</p>
       </div>
     )
   }
