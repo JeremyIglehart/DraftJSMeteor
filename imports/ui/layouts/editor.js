@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { createContainer } from 'meteor/react-meteor-data'
+import { Roles } from 'meteor/alanning:roles'
 import {
           CompositeDecorator,
           ContentBlock,
@@ -17,6 +18,8 @@ import { Accounts, STATES } from 'meteor/std:accounts-ui';
 import RaisedButton from 'material-ui/RaisedButton'
 import FontIcon from 'material-ui/FontIcon'
 import IconButton from 'material-ui/IconButton'
+
+import Admin from '../components/admin'
 
 const iconStyles = {
 }
@@ -67,6 +70,10 @@ class MyEditor extends Component {
     this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'))
   }
   render() {
+    let {
+      isAdmin
+    } = this.props
+
     return (
       <div className="editor-container">
         <h1>DraftJS and Meteor Editor:</h1>
@@ -77,8 +84,13 @@ class MyEditor extends Component {
           editorState={this.state.editorState}
           onChange={this.onChange}
           handleKeyCommand={this.handleKeyCommand.bind(this)}
+          readOnly={!isAdmin}
           />
         <RaisedButton label="Log Editor State to Console" onClick={this.logState.bind(this)} primary={true} style={buttonStyle} />
+
+        <Admin>
+          You are an Admin
+        </Admin>
       </div>
     )
   }
@@ -108,6 +120,16 @@ const Link = (props) => {
 }
 
 export default createContainer(() => {
+  let currentUser = Meteor.user()
+
+  if (currentUser) {
+    console.log("currentUser:", currentUser)
+    console.log("currentUser is and admin:", Roles.userIsInRole(currentUser._id, 'admin'))
+    return {
+      isAdmin: Roles.userIsInRole(currentUser._id, 'admin'),
+      loading: false
+    }
+  }
 
   return { loading: true }
 }, MyEditor)
